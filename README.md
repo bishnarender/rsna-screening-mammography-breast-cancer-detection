@@ -106,6 +106,9 @@ During training, Upsample (simply copying samples) is performed using a "custom 
 
 File changed in timm (v0.9.2) is only "timm > data > loader.py".
 
+Demo of applied augmentation:
+![augmentation](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/00096e37-9115-451d-86f6-3fa0edc9be75)
+
 ![model](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/e837a9b8-4915-414d-819f-f7ca3960c68a)
 
 #### What is Average Recall (AR)?

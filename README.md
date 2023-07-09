@@ -130,11 +130,6 @@ AP@[.5:.95] corresponds to the average of APs for IoU thresholds 0.5 to 0.95 wit
 
 [Reference](https://towardsdatascience.com/on-object-detection-metrics-with-worked-example-216f173ed31e/)
 
-#### What is Average Precision (AP)?
+#### What is mean Average Precision (mAP)?
 -----
 ![map_r](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/1d1130dc-e48b-4b4c-b5f7-e3947471f81b)
-
-
-
-
-

@@ -14,7 +14,7 @@ For better understanding of project, read the files in the following order:
 6. train_exp.ipynb
 7. rsna-breast-submission.ipynb
 
-Instead of original data, certain external datasets have been used.
+Along with the original data, certain external datasets also have been used.
 
 4-folds splits have been used instead of 5, probably because the number of positives is not sufficient (0.02 %). During inference I did not use the fold_0 due to poor metrics. And obtained the score with ensemble of fold_1, fold_2 and fold_3 weights.
 

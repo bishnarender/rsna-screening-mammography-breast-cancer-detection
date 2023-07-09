@@ -75,15 +75,65 @@ Output [3549,6] denotes you have 3549 bboxes and each has 4 bbox values (x_cente
 
 -----
 
-### ROI Extraction and Training
+### ROI Extraction
 
 During ROI extraction, images are manually resized instead of relying on "yolox" for resizing. 
 
 ![roi_extraction_filtering](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/9eb1eae5-44c2-4405-9e37-22f96b2c6cce)
 
-File changed in timm (v0.9.2) is only "timm > data > loader.py".
+#### What is Binarization or Thresholding?
+-----
+Image thresholding is a technique used in image processing and computer vision to convert a grayscale or color image into a binary image, where each pixel is assigned either a black (0) or white (255) value based on a predefined threshold. The thresholding process separates objects or regions of interest from the background by comparing pixel intensities to the threshold value.
+
+Pixels with intensities below the threshold are considered part of the background and set to black, while pixels with intensities equal to or above the threshold are considered part of the foreground and set to white.
+Thresholding can be used for various purposes, such as image segmentation, object detection, and feature extraction.
+
+Otsu's method determines an optimal global threshold value from the image histogram. Consider an image with only two distinct image values (bimodal image), where the histogram would only consist of two peaks. A good threshold would be in the middle of those two values. 
+
+Here, image is first filtered with a gaussian kernel to remove the noise, then Otsu thresholding is applied.
+
+#### What is windowing in relation to dicom files?
+-----
+Windowing, also known as grey-level mapping, contrast stretching, histogram modification or contrast enhancement is the process in which the CT image greyscale component of an image is manipulated via the CT numbers; doing this will change the appearance of the picture to highlight particular structures. The brightness of the image is adjusted via the window level. The contrast is adjusted via the window width.
+
+
+
+-----
+
+### Training
 
 During training, Upsample (simply copying samples) is performed using a "custom batch sampler" so that each batch has at least one pos case.
+
+File changed in timm (v0.9.2) is only "timm > data > loader.py".
+
+![model](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/e837a9b8-4915-414d-819f-f7ca3960c68a)
+
+#### What is Average Recall (AR)?
+-----
+AR@[.5:.95] corresponds to the average of recalls for IoU thresholds 0.5 to 0.95 with a step size of 0.05. 
+
+#### What is Average Precision (AP)?
+-----
+General definition for the Average Precision (AP) is finding the area under the precision-recall curve above. The following AP formula to calculate value of AU-PR curve. AP = sum_over_n{(Rn-Rn-1)Pn} where n is the corresponding threshold.
+
+First, recall and precision (at a certain IoU threshold) is calculated for every ground truth available. So, we have as many recalls and precisions as the ground truths are. Then from available recalls instead of using exact precision value P(R) corresponding to certain recall R, a maximum precision value is chosen based on interpolation whose recall value is greater than R. Finally from these "precision, recall" pairs the average precision is calculated.
+
+AP is calculated individually for each class.
+
+TP: if IoU ≥ 0.5, classify the object detections as True Positive.
+FP: if IoU < 0.5.
+TN: when ground truth is not present and also model failed to detect an object.
+FN: when ground truth is present and model failed to detect an object.
+
+AP@[.5] corresponds to the AP for IOU 0.5.
+AP@[.5:.95] corresponds to the average of APs for IoU thresholds 0.5 to 0.95 with a step size of 0.05. 
+
+[Reference](https://towardsdatascience.com/on-object-detection-metrics-with-worked-example-216f173ed31e/)
+
+#### What is Average Precision (AP)?
+-----
+![map_r](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/1d1130dc-e48b-4b4c-b5f7-e3947471f81b)
+
 
 
 

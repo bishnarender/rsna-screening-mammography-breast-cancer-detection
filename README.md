@@ -49,7 +49,7 @@ A feature pyramid network extracts information from an image at different stages
 OTA: Optimal Transport Assignment for Object Detection, solves the issue by considering the label assignment task as a Transport Problem. Simplified OTA or simOTA is the redesigned Optimal Transport Assignment strategy. 
 
 
-<b>What is an anchor?</b>
+#### What is an anchor?
 -----
 An anchor refers to a predefined bounding box of a specific size and aspect ratio. During training, the model adjusts the predicted bounding box coordinates relative to the anchor box. Each anchor box is associated with a set of parameters that the model learns to predict. These parameters include offsets for the box's center coordinates, width, height, objectness score, and class probabilities. Each point in the feature map is corresponding to a set of anchor boxes.
 
@@ -57,7 +57,9 @@ An anchor refers to a predefined bounding box of a specific size and aspect rati
 
 During inference, the model generates a set of predicted bounding boxes based on the anchor boxes and their corresponding parameters. These predicted boxes are then filtered and refined using techniques like non-maximum suppression (NMS) to obtain the final detections. The way nonmax suppression removes bounding boxes with a high overlap is by using the IoU score between overlapping bounding boxes.
 
-YOLOX, does not use predefined anchor boxes, it directly predicts bounding box coordinates and sizes without relying on anchor-related parameters. To directly predict a bounding box, YOLOX uses a decoupled head. Anchor-free methods try to localize the objects directly without using the boxes as proposals but using "centers" or "key points". 
+YOLOX, does not use predefined anchor boxes. Instead of "anchor box", yolox uses "anchor point". Anchor point is slightly different thing. An anchor point is an offset to move the x,y location of a prediction while the "anchor box" is a predefined box that is used as an offset for the h, w parts of a prediction. 
+
+Anchor-free methods try to localize the objects directly without using the boxes as proposals but using "centers" or "key points". 
 
 In key-points proposal, several specified (or self-learning) key points are located throughout the object by keypoint-based detectors. The spatial extent of the object is obtained through these clusters of key points.
 
@@ -66,11 +68,23 @@ In key-points proposal, several specified (or self-learning) key points are loca
 
 Whereas, center-based detectors find positives in the center (or center region), then predict three/four distances from positives to the boundary.
 
-Instead of "anchor box", yolox uses "anchor point". Anchor point is slightly different thing. An anchor point is an offset to move the x,y location of a prediction while the "anchor box" is a predefined box that is used as an offset for the w, h parts of a prediction. 
-
 Actual YOLOX architecture:
+![yolox](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/db637041-5543-4378-b619-d06cfacd122c)
+
+Output [3549,6] denotes you have 3549 bboxes and each has 4 bbox values (x_center, y_center, height, width),  1 confidence score (or objectness score) and 1 probability for our positive-class.
+
+-----
+
+### ROI Extraction and Training
 
 During ROI extraction, images are manually resized instead of relying on "yolox" for resizing. 
+
+![roi_extraction_filtering](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/9eb1eae5-44c2-4405-9e37-22f96b2c6cce)
+
+File changed in timm (v0.9.2) is only "timm > data > loader.py".
+
+During training, Upsample (simply copying samples) is performed using a "custom batch sampler" so that each batch has at least one pos case.
+
 
 
 

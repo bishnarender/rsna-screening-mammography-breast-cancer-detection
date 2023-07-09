@@ -25,6 +25,7 @@ During the visual data analysis it was noticed that there is a large variation i
 [Remek Kinas](https://www.kaggle.com/remekkinas/). annotated about 500 images in a human-in-the-loop technique. Yolox has been trained on this data for ROI. Human-in-the-loop technique involves the process of manually labeling or marking specific objects or regions of interest within the images.
 
 <b>YOLOX</b>
+-----
 YOLOX starts with a backbone network, such as a variant of the popular backbone network, Darknet or CSPDarknet. The backbone network extracts feature maps from the input image at multiple scales using convolutional layers and downsample operations.
 
 ![yolo_x](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/4733dbb6-18f4-4b26-b717-1453426ddef4)
@@ -49,6 +50,7 @@ OTA: Optimal Transport Assignment for Object Detection, solves the issue by cons
 
 
 <b>What is an anchor?</b>
+-----
 An anchor refers to a predefined bounding box of a specific size and aspect ratio. During training, the model adjusts the predicted bounding box coordinates relative to the anchor box. Each anchor box is associated with a set of parameters that the model learns to predict. These parameters include offsets for the box's center coordinates, width, height, objectness score, and class probabilities. Each point in the feature map is corresponding to a set of anchor boxes.
 
 ![anchoxboxes](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/ddbf6836-e25d-4b39-b794-ab697643885d)

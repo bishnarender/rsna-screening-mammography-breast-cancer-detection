@@ -24,7 +24,7 @@ During the visual data analysis it was noticed that there is a large variation i
 
 [Remek Kinas](https://www.kaggle.com/remekkinas/). annotated about 500 images in a human-in-the-loop technique. Yolox has been trained on this data for ROI. Human-in-the-loop technique involves the process of manually labeling or marking specific objects or regions of interest within the images.
 
-<b>YOLOX</b>
+### <b>YOLOX</b>
 -----
 YOLOX starts with a backbone network, such as a variant of the popular backbone network, Darknet or CSPDarknet. The backbone network extracts feature maps from the input image at multiple scales using convolutional layers and downsample operations.
 

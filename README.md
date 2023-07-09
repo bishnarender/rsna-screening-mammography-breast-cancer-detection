@@ -24,7 +24,8 @@ During the visual data analysis it was noticed that there is a large variation i
 
 [Remek Kinas](https://www.kaggle.com/remekkinas/). annotated about 500 images in a human-in-the-loop technique. Yolox has been trained on this data for ROI. Human-in-the-loop technique involves the process of manually labeling or marking specific objects or regions of interest within the images.
 
-### YOLOX
+#### YOLOX
+-----
 YOLOX starts with a backbone network, such as a variant of the popular backbone network, Darknet or CSPDarknet. The backbone network extracts feature maps from the input image at multiple scales using convolutional layers and downsample operations.
 
 ![yolo_x](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/4733dbb6-18f4-4b26-b717-1453426ddef4)

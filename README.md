@@ -1,5 +1,5 @@
 ## rsna-screening-mammography-breast-cancer-detection
-## 1st place score achieved.
+## score at 1st position is achieved.
 ![rsna_breast_submission](https://github.com/bishnarender/rsna-screening-mammography-breast-cancer-detection/assets/49610834/e897c0ab-6457-4c37-9885-294bf28210ab)
 
 -----
